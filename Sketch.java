@@ -7,12 +7,14 @@ public class Sketch extends PApplet {
   int MARGIN = 5;
   int ROW_COUNT = 10;
   int COLUMN_COUNT = 10;
-  float SCREEN_WIDTH = (10*CELL_WIDTH * 11*MARGIN);
-  float SCREEN_HEIGHT = (10*CELL_HEIGHT * 11*MARGIN);
-  int rectX = 0;
-  int rectY = 0;
+  int SCREEN_WIDTH = (CELL_WIDTH + MARGIN) * COLUMN_COUNT + MARGIN;
+  int SCREEN_HEIGHT = (CELL_HEIGHT + MARGIN) * ROW_COUNT + MARGIN;
   int[][] intGrid;
+  int row = 0;
+  int column = 0;
+  
 
+  
   public void settings() {
     size(500, 500);
   }
@@ -24,7 +26,7 @@ public class Sketch extends PApplet {
     intGrid = new int[ROW_COUNT][COLUMN_COUNT];
     for(int x = 0; x < ROW_COUNT; x++){
       for(int y = 0; y < COLUMN_COUNT; y++){
-        intGrid[y][x] = 0;
+        intGrid[x][y] = 0;
       }
     }
 
@@ -33,32 +35,39 @@ public class Sketch extends PApplet {
 
  
   public void draw() {
-    for(int row = 0; row < ROW_COUNT; row++){
-      for(int column = 0; column < COLUMN_COUNT; column++){
+    for(row = 0; row < ROW_COUNT; row++){
+      for(column = 0; column < COLUMN_COUNT; column++){
         if(intGrid[column][row] == 1){
           fill(0,255,0);
         }
         else{
           fill(255);
         }
-        rect(MARGIN,rectY,CELL_WIDTH,CELL_HEIGHT);
-        MARGIN+=49;
-      }
-      MARGIN = 5;
-      rectY +=50;
-    }
+          int boxX = (MARGIN + CELL_WIDTH) * column + MARGIN + CELL_HEIGHT/2 -25;
+          int boxY = (MARGIN + CELL_HEIGHT) * row + MARGIN + CELL_HEIGHT/2 -25;
 
+          rect(boxX,boxY,CELL_WIDTH,CELL_HEIGHT);
+
+      }
+
+    }
     
   }
   public void mousePressed(){
-    if(intGrid[mouseY/CELL_WIDTH][mouseX/CELL_HEIGHT] == 1){
-      intGrid[mouseY/CELL_WIDTH][mouseX/CELL_HEIGHT] = 0;
+    
+    
+    //column = (boxX / (CELL_WIDTH + MARGIN));
+    //row = (boxY / (CELL_HEIGHT + MARGIN));
+    
+    if(intGrid[row][column] == 1){
+      intGrid[row][column] = 0;
 
     }
     else{
-      intGrid[mouseY/CELL_WIDTH][mouseX/CELL_HEIGHT] = 1;
+      intGrid[row][column] = 1;
     }
   }
+  
 }
 
   
