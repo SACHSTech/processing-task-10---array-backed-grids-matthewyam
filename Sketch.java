@@ -68,7 +68,7 @@ public class Sketch extends PApplet {
     else{
       intGrid [mouseX/50][mouseY/50] = 1;
     }
-    System.out.println("click" + " " + mouseX + " " + mouseY + " " + mouseY/50 + " " + mouseX/50);
+    System.out.println("Click " + "Mouse Coordinates: " + mouseX + " " + mouseY + " Grid Coordinates: (Row: " + mouseY/50 + " Column: " + mouseX/50 + ")");
   }
 }
 
