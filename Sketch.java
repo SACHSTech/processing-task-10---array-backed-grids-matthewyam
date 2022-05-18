@@ -16,6 +16,7 @@ public class Sketch extends PApplet {
   int row = 0;
   int column = 0;
   
+  
  
   
   public void settings() {
@@ -38,7 +39,6 @@ public class Sketch extends PApplet {
 
  
   public void draw() {
-    intGrid[9][2] = 1;
     for(row = 0; row < ROW_COUNT; row++){
       for(column = 0; column < COLUMN_COUNT; column++){
         int boxX = (MARGIN + CELL_WIDTH) * column + MARGIN + CELL_HEIGHT/2 -25;
@@ -68,6 +68,7 @@ public class Sketch extends PApplet {
     else{
       intGrid [mouseX/50][mouseY/50] = 1;
     }
+    System.out.println("click" + " " + mouseX + " " + mouseY + " " + mouseY/50 + " " + mouseX/50);
   }
 }
 
