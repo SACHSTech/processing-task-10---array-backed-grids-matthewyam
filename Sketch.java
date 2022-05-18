@@ -16,7 +16,7 @@ public class Sketch extends PApplet {
   int row = 0;
   int column = 0;
   
-  
+  int cellCounter = 0;
  
   
   public void settings() {
@@ -63,12 +63,16 @@ public class Sketch extends PApplet {
     
     if(intGrid [mouseX/50][mouseY/50] == 1){
       intGrid [mouseX/50][mouseY/50] = 0;
+      cellCounter -=1;
     }
   
     else{
       intGrid [mouseX/50][mouseY/50] = 1;
+      cellCounter +=1;
     }
     System.out.println("Click " + "Mouse Coordinates: " + mouseX + " " + mouseY + " Grid Coordinates: (Row: " + mouseY/50 + " Column: " + mouseX/50 + ")");
+    System.out.println("Total of " + cellCounter + " cells are selected");
+    System.out.println("");
   }
 }
 
