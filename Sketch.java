@@ -18,6 +18,9 @@ public class Sketch extends PApplet {
   
   int cellCounter = 0;
 
+  int rowCellCount = 0;
+  int colCellCount = 0;
+
   
  
   
@@ -145,8 +148,31 @@ public class Sketch extends PApplet {
         System.out.println("Total of " + cellCounter + " cells are selected");
         System.out.println("");
     
+
+        for(int i = 0; i < ROW_COUNT; i++){
+          for (int j = 0; j < COLUMN_COUNT; j++){
+          if(intGrid[j][i] == 1){
+            rowCellCount++;
+          }
+        }
+        System.out.println("There are " + rowCellCount + " cells selected on Row " + i);
+        rowCellCount = 0;
+        
+        
+        }
+        System.out.println("");
+        for (int l = 0; l < COLUMN_COUNT; l++){
+          for(int k = 0; k < ROW_COUNT; k++){
+          if(intGrid[l][k] == 1){
+            colCellCount++;
+          }
+        }
+        System.out.println("There are " + colCellCount + " cells selected on Column " + l);
+        colCellCount = 0;
+
+      }
     }
-    
+  
     
 
   }
