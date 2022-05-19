@@ -17,6 +17,8 @@ public class Sketch extends PApplet {
   int column = 0;
   
   int cellCounter = 0;
+
+  
  
   
   public void settings() {
@@ -43,6 +45,7 @@ public class Sketch extends PApplet {
       for(column = 0; column < COLUMN_COUNT; column++){
         int boxX = (MARGIN + CELL_WIDTH) * column + MARGIN + CELL_HEIGHT/2 -25;
         int boxY = (MARGIN + CELL_HEIGHT) * row + MARGIN + CELL_HEIGHT/2 -25;
+
         if(intGrid[column][row] == 1){
           fill(0,255,0);
           rect(boxX,boxY,CELL_WIDTH,CELL_HEIGHT);
@@ -59,115 +62,93 @@ public class Sketch extends PApplet {
     
   
   public void mousePressed(){
-    
+    int colCheck = mouseX/50;
+    int rowCheck = mouseY/50;
     
     if(intGrid [mouseX/50][mouseY/50] == 1){
+
       intGrid [mouseX/50][mouseY/50] = 0;
       cellCounter -=1;
+      
     }
     else{
       if(intGrid [mouseX/50][mouseY/50] == 0){
-        intGrid [mouseX/50][mouseY/50] = 1;
-        cellCounter -=1;
-        System.out.println("Click " + "Mouse Coordinates: " + mouseX + " " + mouseY + " Grid Coordinates: (Row: " + mouseY/50 + " Column: " + mouseX/50 + ")");
-        System.out.println("Total of " + cellCounter + " cells are selected");
-        System.out.println("");
-      }
-    }
-
-    if(intGrid [mouseX/50+1][mouseY/50] == 1){
-      intGrid [mouseX/50+1][mouseY/50] = 0;
-      cellCounter -=1;
-    }
-    else{
   
-      if(intGrid [mouseX/50+1][mouseY/50] == 0){
-        intGrid [mouseX/50+1][mouseY/50] = 1;
+        intGrid [mouseX/50][mouseY/50] = 1;
+        cellCounter +=1;
+        
+      
+    }
+  }
+//
+
+      if(colCheck < 9 && intGrid [mouseX/50+1][mouseY/50] == 1 ){
+        
+        intGrid [mouseX/50+1][mouseY/50] = 0;
         cellCounter -=1;
-        System.out.println("Click " + "Mouse Coordinates: " + mouseX + " " + mouseY + " Grid Coordinates: (Row: " + mouseY/50 + " Column: " + mouseX/50 + ")");
-        System.out.println("Total of " + cellCounter + " cells are selected");
-        System.out.println("");
+      
       }
+    
+    else{
+        if(colCheck < 9 && intGrid [mouseX/50+1][mouseY/50] == 0 ){
+          
+            intGrid [mouseX/50+1][mouseY/50] = 1;
+            cellCounter +=1;
+          
+        
     }
+    }
+//
+    if(colCheck > 0 && intGrid [mouseX/50-1][mouseY/50] == 1){ 
 
-    if(intGrid [mouseX/50-1][mouseY/50] == 1){  
-      intGrid [mouseX/50-1][mouseY/50] = 0;
+        intGrid [mouseX/50-1][mouseY/50] = 0;
+        cellCounter -=1;
+      
     }
     else{
-      if(intGrid [mouseX/50-1][mouseY/50] == 0){  
+      if(colCheck > 0 && intGrid [mouseX/50-1][mouseY/50] == 0){          
         intGrid [mouseX/50-1][mouseY/50] = 1;
-        System.out.println("Click " + "Mouse Coordinates: " + mouseX + " " + mouseY + " Grid Coordinates: (Row: " + mouseY/50 + " Column: " + mouseX/50 + ")");
-        System.out.println("Total of " + cellCounter + " cells are selected");
-        System.out.println("");
+          cellCounter +=1;
+        
       }
     }
-    if(intGrid [mouseX/50][mouseY/50+1] == 1){
-      intGrid [mouseX/50][mouseY/50+1] = 0;
-
-      cellCounter -=1;
+//
+    if(rowCheck < 9 && intGrid [mouseX/50][mouseY/50+1] == 1){
+        intGrid [mouseX/50][mouseY/50+1] = 0;
+        cellCounter -=1;
+      
     }
     else{
-      if(intGrid [mouseX/50][mouseY/50+1] == 0){
+      if(rowCheck < 9 && intGrid [mouseX/50][mouseY/50+1] == 0){
         intGrid [mouseX/50][mouseY/50+1] = 1;
   
-        cellCounter -=1;
-        System.out.println("Click " + "Mouse Coordinates: " + mouseX + " " + mouseY + " Grid Coordinates: (Row: " + mouseY/50 + " Column: " + mouseX/50 + ")");
-        System.out.println("Total of " + cellCounter + " cells are selected");
-        System.out.println("");
+        cellCounter +=1;
+        
+       
       }
     }
-    if(intGrid [mouseX/50][mouseY/50-1] == 1){
-      intGrid [mouseX/50][mouseY/50-1] = 0;
-      cellCounter -=1;
+//
+    if(rowCheck > 0 && intGrid [mouseX/50][mouseY/50-1] == 1){
+        intGrid [mouseX/50][mouseY/50-1] = 0;
+        cellCounter -=1;
+      
     }
   
     else{
-      if(intGrid [mouseX/50][mouseY/50-1] == 0){
-        intGrid [mouseX/50][mouseY/50-1] = 1;
-        cellCounter -=1;
-        System.out.println("Click " + "Mouse Coordinates: " + mouseX + " " + mouseY + " Grid Coordinates: (Row: " + mouseY/50 + " Column: " + mouseX/50 + ")");
-        System.out.println("Total of " + cellCounter + " cells are selected");
-        System.out.println("");
+      if(rowCheck > 0 && intGrid [mouseX/50][mouseY/50-1] == 0){
+          intGrid [mouseX/50][mouseY/50-1] = 1;
+          cellCounter +=1;
+        
       }
     }
-    /*
-    if(intGrid [mouseX/50][mouseY/50] == 0){
-      intGrid [mouseX/50][mouseY/50] = 1;
-      cellCounter -=1;
+    System.out.println("Click " + "Mouse Coordinates: " + mouseX + " " + mouseY + " Grid Coordinates: (Row: " + mouseY/50 + " Column: " + mouseX/50 + ")");
+        System.out.println("Total of " + cellCounter + " cells are selected");
+        System.out.println("");
+    
     }
+    
+    
 
-    if(intGrid [mouseX/50+1][mouseY/50] == 0){
-      intGrid [mouseX/50+1][mouseY/50] = 1;
-      cellCounter -=1;
-    }
-    if(intGrid [mouseX/50-1][mouseY/50] == 0){  
-      intGrid [mouseX/50-1][mouseY/50] = 1;
-    }
-    if(intGrid [mouseX/50][mouseY/50+1] == 0){
-      intGrid [mouseX/50][mouseY/50+1] = 1;
-
-      cellCounter -=1;
-    }
-    if(intGrid [mouseX/50][mouseY/50-1] == 0){
-      intGrid [mouseX/50][mouseY/50-1] = 1;
-      cellCounter -=1;
-    }
-    */
-   
-    
-    
-      /*
-      intGrid [mouseX/50][mouseY/50] = 1;
-      intGrid [mouseX/50+1][mouseY/50] = 1;
-      intGrid [mouseX/50-1][mouseY/50] = 1;
-      intGrid [mouseX/50][mouseY/50+1] = 1;
-      intGrid [mouseX/50][mouseY/50-1] = 1;
-      cellCounter +=1;
-      */
-    }
-    
-    
-   
   }
 
 
