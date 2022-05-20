@@ -162,12 +162,17 @@ public class Sketch extends PApplet {
           rowCellCount++;
         }
         //Checks how many cells are selected consecutively
-        if(i > 0 && i < 9){
+        
+        if(i<9){
           if(intGrid[j][i] == 1 && intGrid[j][i+1] == 1){
             rowCont+=1;
           }
+        }
+
+        if(i > 0 && i < 9){
+          
             
-          if(intGrid[j][i] == 1 && intGrid[j][i-1] == 1){
+          if(intGrid[j][i] == 1 && intGrid[j][i-1] == 1 && i==9){
             rowCont+=1;
           }
           
@@ -181,7 +186,7 @@ public class Sketch extends PApplet {
 
         }
         //Prints how manny cells are selected per row and consecutively
-        if (rowCont > 0 && rowCont < 9  && rowCellCount > 2){ 
+        if (rowCont > 0 && rowCellCount > 2){ 
           System.out.println("There are " + rowCont + " consecutive cells selected on Row " + i);
           rowCont = 0;
           }
