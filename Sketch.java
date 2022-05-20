@@ -162,15 +162,12 @@ public class Sketch extends PApplet {
           rowCellCount++;
         }
         //Checks how many cells are selected consecutively
-        
-        if(i<9){
-          if(intGrid[j][i] == 1 && intGrid[j][i+1] == 1){
-            rowCont+=1;
-          }
-        }
 
         if(i > 0 && i < 9){
           
+          if(intGrid[j][i] == 1 && intGrid[j][i+1] == 1){
+            rowCont+=1;
+          }
             
           if(intGrid[j][i] == 1 && intGrid[j][i-1] == 1 && i==9){
             rowCont+=1;
