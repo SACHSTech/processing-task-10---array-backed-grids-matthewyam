@@ -153,7 +153,7 @@ public class Sketch extends PApplet {
     System.out.println("Total of " + cellCounter + " cells are selected");
     System.out.println("");
     
-
+    rowCont = 0;
     for(int i = 0; i < ROW_COUNT; i++){
       for (int j = 0; j < COLUMN_COUNT; j++){
       
